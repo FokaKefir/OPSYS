@@ -1,0 +1,22 @@
+{
+    "env": {
+        //"myDefaultIncludePath": ["${workspaceFolder}", "${workspaceFolder}/include"],
+        // "myCompilerPath": "/usr/bin/gcc"
+    },
+    "configurations": [
+        {
+            "name": "Linux",
+             "includePath": [
+                "${workspaceFolder}/**","~/Sapientia/OPSYS" 
+             ],
+            "defines": [],
+            // "defines": ["FOO", "BAR=100"],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64" 
+            //"forcedInclude": ["${workspaceFolder}/include/myinclude.h"],
+        }
+    ],
+    "version": 4
+}

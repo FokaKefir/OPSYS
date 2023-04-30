@@ -1,0 +1,9 @@
+almakecske
+def
+ghi
+a
+ab
+abc
+abcd
+abcde
+abcdef

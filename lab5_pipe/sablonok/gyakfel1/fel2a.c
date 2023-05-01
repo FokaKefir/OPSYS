@@ -26,7 +26,10 @@ void fel2(int pfd1) {
 void fel3(int pfd0) {
     // vizsgalja hogy a fifo elerheto-e
     if (access(FIFO_NAME, F_OK)) {
-        syserr("fifo");
+        //syserr("fifo");
+        if (mkfifo(FIFO_NAME, 0644) < 0) {
+            syserr("mkfifo");
+        }
     }
     // megnyitja a fifo-t
     int fifo = open(FIFO_NAME, O_WRONLY);

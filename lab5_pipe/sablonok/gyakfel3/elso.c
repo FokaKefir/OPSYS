@@ -42,11 +42,8 @@ void fel1(int pfd0) {
     }
 
     float k1, k2;
-    while(read(pfd0, (void *) &k1, sizeof(float)) > 0) {
+    while(read(pfd0, (void *) &k1, sizeof(float)) > 0 && fscanf(fin, "%f", &k2) != EOF) {
         //printf("foly1: %f\n", k);
-        if (fscanf(fin, "%f", &k2) == EOF) {
-            syserr("nem ugyan annyi szam");
-        }
         float res = fabsf(k1 - k2);
         if (write(fifo, &res, sizeof(float)) != sizeof(float)) {
             syserr("write fifo");

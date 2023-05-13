@@ -39,8 +39,57 @@ int main()
 
 	//TODO: itt megoldani a feladatot
 
-	//...
+	// letrehozzuk a szemafort
+	semid = semget(key, 1, IPC_CREAT | 0660);
+	if (semid < 0) {
+		syserr("semid");
+	}
 
+	// szemafornak kezdeti erteket adunk
+	if (semctl(semid, 0, SETVAL, 0) < 0) {
+		syserr("semctl");
+	}
+
+	// forkolas
+	pid = fork();
+	if (pid < 0) {
+		syserr("fork");
+	}
+	if (pid == 0) {
+		// fiu folyamat
+		for (cnt = 0; cnt < N; ++cnt) {
+			if (semop(semid, &wait0, 1) < 0) {
+				syserr("semop");
+			}
+
+			printf("tikk\n");
+
+			if (semop(semid, &up, 1) < 0) {
+				syserr("semop");
+			}
+		}
+		
+		exit(EXIT_SUCCESS);
+	} else {
+		// apa folyamat
+		for (cnt = 0; cnt < N; ++cnt) {
+			if (semop(semid, &down, 1) < 0) {
+				syserr("semop");
+			}
+			
+			printf("takk\n");
+		
+			if (semop(semid, &down, 1) < 0) {
+				syserr("semop");
+			}
+		}
+
+		wait(NULL);
+	}
+
+	if (semctl(semid, 0, IPC_RMID, 0) < 0) {
+		syserr("semctl");
+	}
 
 	exit(EXIT_SUCCESS);
 }	

@@ -24,7 +24,7 @@ int main( int argc, char * argv[])
     }
 
     //TODO: szemafor inicializálás
-    short init = {1, 0};
+    short init[2] = {1, 0};
     if (semctl(semid, 0, SETALL, init) < 0) {
         syserr("semctl");
     }
@@ -49,7 +49,11 @@ int main( int argc, char * argv[])
         }
         // 2. 1 sor olvasása stdin->mem, max 1024 byte!
         if (fgets(mem, SIZE, stdin) == NULL) {
-            syserr("fgets");
+            strcpy(mem, "exit");
+            if (semop(semid, &fogyaszto_up, 1) < 0) {
+                syserr("semop");
+            }
+            break;
         }
 
         // 3. up művelet

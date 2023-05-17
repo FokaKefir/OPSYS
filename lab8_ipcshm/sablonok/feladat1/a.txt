@@ -4,4 +4,6 @@ Szia
 Hello
 
 asd
+
+asdasd
 exit

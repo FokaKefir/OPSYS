@@ -44,16 +44,14 @@ int main( int argc, char * argv[])
         }
 
         // 2. 1 sor olvasása és kiírása: mem->stdout 
+        //ha  a sor "exit" akkor break
+        if(strcmp(mem, "exit") == 0 || strcmp(mem, "exit\n") == 0) {
+            break;
+        }
         printf("%s",mem);
 
         // 3. up művelet
-        //ha  a sor "exit" akkor break
-        if(strcmp(mem, "exit") == 0 || strcmp(mem, "exit\n") == 0) {
-            if (semop(semid, &termelo_up, 1) < 0) {
-                syserr("semop");
-            }
-            break;
-        }
+        
         if (semop(semid, &termelo_up, 1) < 0) {
             syserr("semop");
         }

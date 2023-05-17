@@ -1,0 +1,37 @@
+N=10
+
+megoldás 3 szemaforral:
+s0 s1 s2 
+1  10  0 
+
+fiú be:  -1->s0, -1->s1 
+    ki:  +1->s0, +1->s2  
+
+apa be:  -10->s2
+    ki:  +10->s1 
+
+megoldás 2 szemaforral:
+s0 s1 
+1   0
+
+fiúk  be -1 -> s0
+      ki +1-> s0 ha nem telt meg 
+         +1-> s1 ha megtelt 
+apa   be -1 -> s1 
+      ki +1 -> s0
+
+megoldás 2 szemaforral és zeróra vár művelettel:
+s0 s1 
+1  10 
+
+fiúk  be -1 -> s0
+         -1 -> s1
+      ki  +1 -> s0   
+apa   be -1 -> s0
+         zv -> s1
+      ki  +1 -> s0
+         +10 -> s1   
+
+zéróra vár művelet:
+struct sembuf zv1 = {1, 0, 0};   
+

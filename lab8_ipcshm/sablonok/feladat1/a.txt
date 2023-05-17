@@ -1,0 +1,7 @@
+alma
+Szia
+2 3 4
+Hello
+
+asd
+exit

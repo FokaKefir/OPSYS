@@ -15,8 +15,6 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
-#include <time.h>
-
  
 extern int errno ; /* az errno.h által visszadott hibakód */
 
@@ -25,15 +23,6 @@ extern int errno ; /* az errno.h által visszadott hibakód */
 //hozzáfűzi a rendszer hiba üzenetét:
 //   msg : rendszerhiba
 //   alakban
-
-/*
-void syserr ( char * msg )  
-{  
-    perror ( msg ); // kiírja az errno változóban található hibakódot
-                    //és egy rövid hiba üzenetet 
-    exit (EXIT_FAILURE); 
-}
-*/
 
 //makróval ugyanaz:
 #define syserr(msg)   \

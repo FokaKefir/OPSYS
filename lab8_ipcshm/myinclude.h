@@ -15,27 +15,17 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/shm.h>
+#include <math.h>
 #include <time.h>
-
  
 extern int errno ; /* az errno.h által visszadott hibakód */
 
-//rendszer hiba kiíró függvény
+//rendszer hiba kiíró függvény (makró)
 //egy sztringet kap bemenetként, kiírja a sztringet és
 //hozzáfűzi a rendszer hiba üzenetét:
 //   msg : rendszerhiba
 //   alakban
 
-/*
-void syserr ( char * msg )  
-{  
-    perror ( msg ); // kiírja az errno változóban található hibakódot
-                    //és egy rövid hiba üzenetet 
-    exit (EXIT_FAILURE); 
-}
-*/
-
-//makróval ugyanaz:
 #define syserr(msg)   \
   do { \
        fprintf(stderr, "hiba: %s %d. sor:\n", __FILE__, __LINE__); \

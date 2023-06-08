@@ -4,7 +4,7 @@
 int main(int argc, char const *argv[]) {
     
     int msgid = msgget(MSG_KEY, 0660 | IPC_CREAT);
-
+    
     pid_t pid1 = fork();
     if (pid1 < 0) {
         syserr("fork");
@@ -31,6 +31,7 @@ int main(int argc, char const *argv[]) {
     wait(NULL);
     wait(NULL);
     printf("Mind a ket uzenet berkezett\n");
+    
 
     return 0;
 }

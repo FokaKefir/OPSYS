@@ -1,0 +1,8 @@
+moccasin
+navajowhite
+navy
+navyblue
+oldlace
+olive
+olivedrab
+orange

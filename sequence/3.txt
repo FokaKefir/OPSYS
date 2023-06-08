@@ -1,0 +1,8 @@
+springgreen
+steelblue
+tan
+teal
+thistle
+tomato
+turquoise
+violet

@@ -1,0 +1,8 @@
+aliceblue
+antiquewhite
+aqua
+aquamarine
+azure
+beige
+bisque
+black
